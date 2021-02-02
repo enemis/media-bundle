@@ -1,0 +1,57 @@
+{
+    "name": "enemis/media-bundle",
+    "type": "symfony-bundle",
+    "description": "Media management system for symfony application, inspired and based on Sonata Media Project",
+    "license": "MIT",
+    "keywords": [
+        "media",
+        "thumbnail",
+        "youtube",
+        "pdf",
+        "file",
+        "upload"
+    ],
+    "authors": [
+        {
+            "name": "Andrey Stadnik",
+            "email": "stadnikandreypublic@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "guzzlehttp/psr7": "^1.0",
+        "imagine/imagine": "^0.6 || ^0.7 || ^1.0",
+        "jms/serializer-bundle": "^2.3.1 || ^3.0",
+        "knplabs/gaufrette": "^0.8 || ^0.9",
+        "kriswallsmith/buzz": "^0.15 || ^0.16",
+        "psr/log": "^1.0",
+        "doctrine/orm": "^2.8",
+        "doctrine/doctrine-bundle": "^2.2",
+        "symfony/config": "^4.3",
+        "symfony/console": "^4.3",
+        "symfony/dependency-injection": "^4.3",
+        "symfony/event-dispatcher": "^4.3",
+        "symfony/form": "^4.3",
+        "symfony/framework-bundle": "^4.3",
+        "symfony/mime": "^4.3 || ^5.0",
+        "symfony/options-resolver": "^4.3",
+        "symfony/routing": "^4.3",
+        "symfony/security-bundle": "^4.3",
+        "symfony/security-core": "^4.3",
+        "symfony/templating": "^4.3",
+        "symfony/translation": "^4.3",
+        "symfony/twig-bundle": "^4.3",
+        "symfony/validator": "^4.3",
+        "twig/twig": "^2.10|^3.0"
+    },
+    "conflict": {
+        "doctrine/dbal": "<2.6.0",
+        "friendsofsymfony/rest-bundle": "<2.1 || >=3.0",
+        "jms/serializer": "<0.13",
+        "liip/imagine-bundle": "<1.9",
+        "symfony/monolog-bundle": "<2.4"
+    },
+    "autoload": {
+        "psr-4": { "Enemis\\MediaBundle\\": "" }
+    }
+}

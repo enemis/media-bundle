@@ -98,18 +98,7 @@ class Configuration implements ConfigurationInterface
     {
         $node
             ->children()
-                ->arrayNode('filesystem')
-                    ->cannotBeEmpty()
-                    ->requiresAtLeastOneElement()
-                    ->useAttributeAsKey('id')
-                        ->arrayPrototype()
-                        ->ignoreExtraKeys()
-                            ->children()
-                                ->scalarNode('service')->isRequired()->cannotBeEmpty()->end()
-                            ->end()
-                        ->end()
-                    ->end()
-                ->end()
+                ->scalarNode('filesystem')->cannotBeEmpty()->isRequired()->end()
             ->end()
         ;
     }

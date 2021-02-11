@@ -42,7 +42,8 @@
         "symfony/translation": "^4.3",
         "symfony/twig-bundle": "^4.3",
         "symfony/validator": "^4.3",
-        "twig/twig": "^2.10|^3.0"
+        "twig/twig": "^2.10|^3.0",
+        "knplabs/knp-gaufrette-bundle": "v0.7.1"
     },
     "conflict": {
         "doctrine/dbal": "<2.6.0",
@@ -53,5 +54,6 @@
     },
     "autoload": {
         "psr-4": { "Enemis\\MediaBundle\\": "" }
-    }
+    },
+    "minimum-stability": "dev"
 }

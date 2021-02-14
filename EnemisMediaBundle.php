@@ -16,7 +16,7 @@ use Enemis\MediaBundle\DependencyInjection\Compiler\ThumbnailCompilerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class MediaBundle extends Bundle
+class EnemisMediaBundle extends Bundle
 {
     public function build(ContainerBuilder $container)
     {

@@ -15,7 +15,7 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder('enemis_media');
+        $treeBuilder = new TreeBuilder('media_bundle');
 
         $node = $treeBuilder->getRootNode();
         $node
@@ -25,37 +25,31 @@ class Configuration implements ConfigurationInterface
                     ->arrayPrototype()
                         ->children()
                             ->arrayNode('class')
-                                ->arrayPrototype()
                                 ->children()
                                     ->scalarNode('media')->isRequired()->end()
                                     ->scalarNode('gallery')->isRequired()->end()
                                     ->scalarNode('gallery_has_media')->isRequired()->end()
-                                ->end()
+                                 ->end()
                             ->end()
-                    ->end()
                     ->scalarNode('db_driver')->defaultValue('doctrine_orm')->end()
                     ->scalarNode('thumbnail')->defaultValue('sonata.media.thumbnail.format')->end()
-                    ->arrayNode('download')
-                        ->arrayPrototype()
-                            ->children()
-                                ->scalarNode('strategy')->defaultValue('sonata.media.security.superadmin_strategy')->end()
-                                ->scalarNode('mode')->defaultValue('http')->end()
-                            ->end()
-                        ->end()
-                    ->end()
                     ->arrayNode('formats')
                         ->requiresAtLeastOneElement()
                         ->useAttributeAsKey('id')
                         ->scalarPrototype()->end()
                     ->end()
+                    ->arrayNode('download')
+                        ->ignoreExtraKeys()
+                            ->children()
+                                ->scalarNode('service')->cannotBeEmpty()->isRequired()->end()
+                        ->end()
+                    ->end()
                     ->scalarNode('admin_format')->end()
                     ->scalarNode('reference_format')->end()
                     ->arrayNode('cdn')
-                        ->arrayPrototype()
                             ->children()
                                 ->scalarNode('master')->isRequired()->end()
                                 ->scalarNode('fallback')->defaultValue('nofallback')->end()
-                            ->end()
                         ->end()
                     ->end()
                     ->arrayNode('providers')
@@ -66,7 +60,7 @@ class Configuration implements ConfigurationInterface
             ->end();
 
         $this->addCdnSection($node);
-        $this->addFilesystemSection($node);
+//        $this->addFilesystemSection($node);
         $this->addResizerSection($node);
         $this->addAdapterSection($node);
         $this->addProvidersSection($node);
@@ -93,15 +87,15 @@ class Configuration implements ConfigurationInterface
             ->end()
         ;
     }
-
-    private function addFilesystemSection(ArrayNodeDefinition $node): void
-    {
-        $node
-            ->children()
-                ->scalarNode('filesystem')->cannotBeEmpty()->isRequired()->end()
-            ->end()
-        ;
-    }
+//
+//    private function addFilesystemSection(ArrayNodeDefinition $node): void
+//    {
+//        $node
+//            ->children()
+//                ->scalarNode('filesystem')->cannotBeEmpty()->isRequired()->end()
+//            ->end()
+//        ;
+//    }
 
     private function addResizerSection(ArrayNodeDefinition $node): void
     {
@@ -156,8 +150,13 @@ class Configuration implements ConfigurationInterface
                             ->children()
                                 ->scalarNode('service')->isRequired()->cannotBeEmpty()->end()
                                 ->scalarNode('resizer')->isRequired()->cannotBeEmpty()->end()
-                                ->scalarNode('filesystem')->isRequired()->cannotBeEmpty()->end()
-                                ->scalarNode('cdn')->isRequired()->cannotBeEmpty()->end()
+                                ->arrayNode('filesystem')
+                                        ->children()
+                                            ->scalarNode('reference')->cannotBeEmpty()->isRequired()->end()
+                                            ->scalarNode('cache')->end()
+                                        ->end()
+                                ->end()
+//                                ->scalarNode('cdn')->isRequired()->cannotBeEmpty()->end()
                                 ->scalarNode('generator')->defaultValue('sonata.media.generator.default')->end()
                                 ->scalarNode('thumbnail')->defaultValue('sonata.media.thumbnail.format')->end()
                                 ->arrayNode('allowed_extensions')

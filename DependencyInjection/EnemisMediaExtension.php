@@ -15,7 +15,7 @@ use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
-class MediaExtension extends Extension implements PrependExtensionInterface
+class EnemisMediaExtension extends Extension implements PrependExtensionInterface
 {
     /**
      * @var array

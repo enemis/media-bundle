@@ -65,17 +65,7 @@ abstract class Media implements MediaInterface
     /**
      * @var string
      */
-    protected $copyright;
-
-    /**
-     * @var string
-     */
-    protected $authorName;
-//
-//    /**
-//     * @var string
-//     */
-//    protected $context;
+    protected $context;
 
     /**
      * @var bool
@@ -386,38 +376,6 @@ abstract class Media implements MediaInterface
     /**
      * {@inheritdoc}
      */
-    public function setCopyright($copyright)
-    {
-        $this->copyright = $copyright;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getCopyright()
-    {
-        return $this->copyright;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setAuthorName($authorName)
-    {
-        $this->authorName = $authorName;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getAuthorName()
-    {
-        return $this->authorName;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function setCdnIsFlushable($cdnIsFlushable)
     {
         $this->cdnIsFlushable = $cdnIsFlushable;
@@ -509,6 +467,16 @@ abstract class Media implements MediaInterface
     public function getContentType()
     {
         return $this->contentType;
+    }
+
+    public function setContext($context)
+    {
+        $this->context = $context;
+    }
+
+    public function getContext()
+    {
+        return $this->context;
     }
 
     /**

@@ -194,34 +194,6 @@ interface MediaInterface
     public function getLength();
 
     /**
-     * Set copyright.
-     *
-     * @param string $copyright
-     */
-    public function setCopyright($copyright);
-
-    /**
-     * Get copyright.
-     *
-     * @return string $copyright
-     */
-    public function getCopyright();
-
-    /**
-     * Set authorName.
-     *
-     * @param string $authorName
-     */
-    public function setAuthorName($authorName);
-
-    /**
-     * Get authorName.
-     *
-     * @return string $authorName
-     */
-    public function getAuthorName();
-
-    /**
      * Set context.
      *
      * @param string $context
